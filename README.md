@@ -12,7 +12,7 @@
 
 ![Formulaire de remboursement de frais professionnels](docs/screenshots/formulaire-remboursement.png)
 
-### 💻 Vue code — inspectez et copiez le HTML/CSS/JS généré
+### 💻 Vue code — inspectez et sauvegardez le HTML/CSS/JS généré
 
 ![Vue code du composant généré](docs/screenshots/code-view.png)
 
