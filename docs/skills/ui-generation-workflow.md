@@ -32,13 +32,13 @@ Le widget reçoit structuredContent via App.ontoolresult()
 Le widget rend le HTML dans une iframe sandboxée
 ```
 
-**Point clé** : le LLM ne génère pas que la description — il génère aussi **le code HTML/CSS/JS complet** dans le paramètre `htmlCode`. Le serveur MCP ne fait que transiter ou stocker ce code. Toute l'intelligence de génération est dans le LLM.
+**Point clé** : le LLM ne génère pas que la description, il génère aussi **le code HTML/CSS/JS complet** dans le paramètre `htmlCode`. Le serveur MCP ne fait que transiter ou stocker ce code. Toute l'intelligence de génération est dans le LLM.
 
 ---
 
 ## Les trois cas d'usage
 
-### Cas 1 — Générer une UI à partir d'un ticket existant
+### Cas 1 : Générer une UI à partir d'un ticket existant
 
 **Quand :** l'utilisateur a déjà un ticket dans le backlog et veut voir à quoi l'interface pourrait ressembler.
 
@@ -67,7 +67,7 @@ Le widget rend le HTML dans une iframe sandboxée
 
 ---
 
-### Cas 2 — Créer un ticket puis générer son UI
+### Cas 2 : Créer un ticket puis générer son UI
 
 **Quand :** l'utilisateur veut un ticket ET une interface, mais le ticket n'existe pas encore.
 
@@ -98,7 +98,7 @@ Le widget rend le HTML dans une iframe sandboxée
 
 ---
 
-### Cas 3 — Travailler sur une UI libre, sans ticket
+### Cas 3 : Travailler sur une UI libre, sans ticket
 
 **Quand :** l'utilisateur veut juste prototyper une interface sans créer de ticket. C'est le mode « bac à sable ».
 
@@ -146,7 +146,7 @@ Le widget rend le HTML dans une iframe sandboxée
 
 Les outils de génération d'UI sont enregistrés dans `mcp-server/src/mcp-server.ts` avec `registerAppTool` du package `@modelcontextprotocol/ext-apps/server`.
 
-### generateUI — génération libre (Cas 3)
+### generateUI : génération libre (Cas 3)
 
 ```typescript
 import { registerAppTool } from '@modelcontextprotocol/ext-apps/server';
@@ -183,9 +183,9 @@ registerAppTool(
 **Points importants :**
 - `_meta.ui.resourceUri: PREVIEW_URI` → indique au host M365 Copilot d'ouvrir le widget `ui-preview-widget.html` quand cet outil retourne un résultat.
 - `structuredContent.htmlCode` → c'est ce que le widget reçoit via `App.ontoolresult()`.
-- **Pas de sauvegarde fichier** : le HTML est uniquement dans la réponse. Si l'utilisateur recharge la page, c'est perdu (c'est voulu — mode bac à sable).
+- **Pas de sauvegarde fichier** : le HTML est uniquement dans la réponse. Si l'utilisateur recharge la page, c'est perdu (c'est voulu, mode bac à sable).
 
-### updateUI — modification itérative (Cas 3)
+### updateUI : modification itérative (Cas 3)
 
 ```typescript
 registerAppTool(
@@ -215,7 +215,7 @@ registerAppTool(
 
 **Identique à `generateUI`** sauf `type: 'update'` dans `structuredContent`. Le widget affiche un badge différent mais le rendu est le même.
 
-### generateUIFromTicket — génération liée à un ticket (Cas 1 et 2)
+### generateUIFromTicket : génération liée à un ticket (Cas 1 et 2)
 
 ```typescript
 registerAppTool(
@@ -255,7 +255,7 @@ registerAppTool(
 
 **Différence clé avec `generateUI`** : ici le HTML est **écrit dans `tickets.json`** (champ `uiProposal`). Le widget Ticket Board peut ensuite détecter que le ticket a une UI (bouton "Voir & Éditer l'UI" vs "Générer l'UI").
 
-### createTicket avec htmlCode — sauvegarde d'une UI libre (Cas 3 → ticket)
+### createTicket avec htmlCode : sauvegarde d'une UI libre (Cas 3 → ticket)
 
 ```typescript
 registerAppTool(
@@ -399,7 +399,7 @@ function showPreview(htmlCode, description, type) {
 }
 ```
 
-**Pourquoi `doc.open/write/close` ?** Parce que le HTML généré par le LLM est un document HTML **complet** (avec `<!DOCTYPE>`, `<html>`, `<style>`, `<script>`...). On ne peut pas juste mettre `innerHTML` — il faut écraser tout le document de l'iframe.
+**Pourquoi `doc.open/write/close` ?** Parce que le HTML généré par le LLM est un document HTML **complet** (avec `<!DOCTYPE>`, `<html>`, `<style>`, `<script>`...). On ne peut pas juste mettre `innerHTML`, il faut écraser tout le document de l'iframe.
 
 ### Vue Code / Aperçu (toggle)
 
@@ -459,7 +459,7 @@ btnBack.addEventListener('click', async () => {
 
 ---
 
-## Routage LLM — comment le bon outil est choisi
+## Routage LLM : comment le bon outil est choisi
 
 ### description_for_model (ai-plugin.json)
 
@@ -640,14 +640,14 @@ Si tu veux ajouter un nouveau type de génération (par ex. `generateUIFromTempl
 
 3. **Mettre à jour `description_for_model`** pour que le LLM sache quand utiliser ce nouvel outil
 
-4. **Le widget n'a pas besoin de changer** tant que le `structuredContent` contient `htmlCode` — il le rend automatiquement.
+4. **Le widget n'a pas besoin de changer** tant que le `structuredContent` contient `htmlCode`, il le rend automatiquement.
 
 ---
 
 ## Skills liés
 
-- [llm-tool-routing.md](llm-tool-routing.md) — Comment configurer `description_for_model` pour que le LLM choisisse le bon outil
-- [widget-display-and-resourceuri.md](widget-display-and-resourceuri.md) — Comment `resourceUri` contrôle quel widget s'ouvre
-- [widget-realtime-updates.md](widget-realtime-updates.md) — Comment le preview se met à jour automatiquement pendant que le LLM travaille
-- [widget-fullscreen-and-state.md](widget-fullscreen-and-state.md) — Comment le plein écran préserve l'état du widget
-- [mcp-app-csp-resources.md](mcp-app-csp-resources.md) — Comment débloquer les CDN dans les iframes M365
+- [llm-tool-routing.md](llm-tool-routing.md) : Comment configurer `description_for_model` pour que le LLM choisisse le bon outil
+- [widget-display-and-resourceuri.md](widget-display-and-resourceuri.md) : Comment `resourceUri` contrôle quel widget s'ouvre
+- [widget-realtime-updates.md](widget-realtime-updates.md) : Comment le preview se met à jour automatiquement pendant que le LLM travaille
+- [widget-fullscreen-and-state.md](widget-fullscreen-and-state.md) : Comment le plein écran préserve l'état du widget
+- [mcp-app-csp-resources.md](mcp-app-csp-resources.md) : Comment débloquer les CDN dans les iframes M365

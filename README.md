@@ -12,15 +12,15 @@
 
 ![Formulaire de remboursement de frais professionnels](docs/screenshots/formulaire-remboursement.png)
 
-### 💻 Vue code — inspectez et sauvegardez le HTML/CSS/JS généré
+### 💻 Vue code : inspectez et sauvegardez le HTML/CSS/JS généré
 
 ![Vue code du composant généré](docs/screenshots/code-view.png)
 
-### 🗂️ Ticket Board plein écran — gérez votre backlog complet
+### 🗂️ Ticket Board plein écran : gérez votre backlog complet
 
 ![Gestionnaire de tickets en plein écran](docs/screenshots/ticket-board-fullscreen.png)
 
-> 🚀 **Première fois ?** Consulte le [Guide de démarrage](docs/getting-started.md) — de l'installation de VS Code jusqu'au premier F5.
+> 🚀 **Première fois ?** Consulte le [Guide de démarrage](docs/getting-started.md) : de l'installation de VS Code jusqu'au premier F5.
 
 ---
 
@@ -62,15 +62,15 @@ L'objectif est de couvrir un cycle complet :
 
 ## Cas d'usage couverts
 
-### Cas 1 — Générer une UI à partir d'un ticket existant
+### Cas 1 : Générer une UI à partir d'un ticket existant
 
 L'utilisateur sélectionne un ticket dans le backlog, demande à l'agent de produire une proposition d'interface, puis visualise le résultat dans le panneau latéral. Il peut ensuite affiner l'interface par conversation et conserver la proposition associée au ticket.
 
-### Cas 2 — Créer un ticket puis générer sa UI
+### Cas 2 : Créer un ticket puis générer sa UI
 
 L'utilisateur décrit un besoin, l'agent crée un ticket avec les métadonnées utiles (statut, priorité, assignation), puis génère l'interface correspondante à partir de cette nouvelle entrée du backlog.
 
-### Cas 3 — Générer une UI libre sans ticket
+### Cas 3 : Générer une UI libre sans ticket
 
 L'utilisateur décrit directement une interface sans passer par le backlog. L'agent génère alors une UI autonome, permet les itérations successives, puis propose éventuellement de sauvegarder le résultat dans un ticket existant ou nouvellement créé.
 
@@ -80,9 +80,9 @@ L'utilisateur décrit directement une interface sans passer par le backlog. L'ag
 
 Ce projet est un **agent déclaratif Microsoft 365 Copilot** (Declarative Copilot Agent), connecté à un **MCP Server** via le protocole **Model Context Protocol**, avec des **widgets interactifs MCP Apps** (Embedded Apps) affichés directement dans le chat M365 Copilot.
 
-- **Agent déclaratif M365 Copilot** — manifest v1.26, agent v1.6, plugin v2.4 avec `RemoteMCPServer`
-- **MCP Server Node.js/TypeScript/Express** — 10 outils exposés via Streamable HTTP
-- **Widgets MCP Apps** — 2 widgets HTML interactifs intégrés au chat (backlog + preview)
+- **Agent déclaratif M365 Copilot** : manifest v1.26, agent v1.6, plugin v2.4 avec `RemoteMCPServer`
+- **MCP Server Node.js/TypeScript/Express** : 10 outils exposés via Streamable HTTP
+- **Widgets MCP Apps** : 2 widgets HTML interactifs intégrés au chat (backlog + preview)
 - Génération d'interfaces **HTML/CSS/JS** à partir d'une description en langage naturel
 - Mise à jour incrémentale d'une UI existante via le chat
 - Gestion d'un backlog de tickets UI avec **statut**, **priorité** et **assigné**
@@ -325,7 +325,7 @@ Ce choix permet :
 
 | Version | Description |
 |---------|-------------|
-| `v1.0.0` | Version initiale — agent complet avec 3 cas d'usage UI, widget backlog, preview plein écran et polling temps réel |
+| `v1.0.0` | Version initiale : agent complet avec 3 cas d'usage UI, widget backlog, preview plein écran et polling temps réel |
 
 ---
 
